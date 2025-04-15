@@ -9,8 +9,8 @@
     pkgs = import nixpkgs { system = "x86_64-linux"; };
     rustPlatform = pkgs.rustPlatform;
   in {
-    packages.x86_64-linux.sfed = rustPlatform.buildRustPackage {
-      name = "sfed";
+    packages.x86_64-linux.stfed = rustPlatform.buildRustPackage {
+      name = "stfed";
       version = "1.1.0";
 
       src = ./.; 
@@ -25,5 +25,6 @@
         platforms = platforms.linux;
       };
     };
+    defaultPackage.x86_64-linux = self.packages.x86_64-linux.stfed;
   };
 }
